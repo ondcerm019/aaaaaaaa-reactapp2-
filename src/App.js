@@ -1,24 +1,22 @@
-import logo from './logo.svg';
+import {useState} from "react"
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Container, Button} from "reactstrap";
+import Dice from "./components/Dice"
 
 function App() {
+  const [size, setSize] = useState(6);
+  const [dice1, setDice1] = useState(6);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Dice size={size} rollHandler={(val) => setDice1(val)}/>
+      <Dice size={size} />
+      <Dice size={size} />
+      <Dice size={size} />
+      <Button onClick={() => {setSize(20)}}>20</Button>
+      <Button onClick={() => {setSize(10)}}>10</Button>
+      <p>{dice1}</p>
+    </Container>
   );
 }
 
